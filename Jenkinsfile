@@ -2,16 +2,10 @@ pipeline{
     agent any
     stages{
         stage("Sonar Quality Check"){
-            agent{
-                docker{
-                    image 'openjdk:11'
-                }
-            }
             steps{
                 script{
                     withSonarQubeEnv('sonarqube-9.2.4') {
                         sh 'chmod +x gradlew'
-                        sh './gradlew clean'
                         sh './gradlew sonarqube --warning-mode=all'
                     }
 
