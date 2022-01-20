@@ -35,7 +35,7 @@ while [ -h "$PRG" ] ; do
         PRG=`dirname "$PRG"`"/$link"
     fi
 done
-echo "$PRG"
+echo "-=-=-=-=-=-=-=-=-=-=$PRG"
 
 SAVED="`pwd`"
 cd "`dirname \"$PRG\"`/" >/dev/null
