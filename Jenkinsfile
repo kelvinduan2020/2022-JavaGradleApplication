@@ -9,10 +9,10 @@ pipeline{
             }
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonar-token') {
+                    withSonarQubeEnv('sonarqube-9.2.4') {
                         sh 'chmod +x gradlew'
                         sh './gradlew clean'
-                        sh './gradlew sonar --scan --warning-mode=all'
+                        sh './gradlew sonarqube --warning-mode=all'
                     }
 
                     timeout(time: 1, unit: 'HOURS') {
