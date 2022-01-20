@@ -12,7 +12,7 @@ pipeline{
                     withSonarQubeEnv(credentialsId: 'sonar-token') {
                         sh 'chmod +x gradlew'
                         sh './gradlew clean'
-                        sh './gradlew sonarqube --scan --warning-mode=all'
+                        sh './gradlew sonar --scan --warning-mode=all'
                     }
 
                     timeout(time: 1, unit: 'HOURS') {
