@@ -1,12 +1,19 @@
 pipeline{
     agent any
     stages{
+        stage ('Checkout Code'){
+            steps{
+                git branch: 'devops', 
+                    url: 'https://github.com/kelvinduan2020/CICD_Java_gradle_application.git'
+            }
+        }
+        
         stage("Sonar Quality Check"){
             steps{
                 script{
-                    withSonarQubeEnv('sonarqube-9.2.4') {
+                    withSonarQubeEnv('sonarqube-server') {
                         sh 'chmod +x gradlew'
-                        sh './gradlew sonarqube --warning-mode=all'
+                        sh './gradlew sonarqube'
                     }
 
                     timeout(time: 1, unit: 'HOURS') {
